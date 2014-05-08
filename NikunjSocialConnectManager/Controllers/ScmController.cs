@@ -37,6 +37,7 @@ namespace NikunjSocialConnectManager.Controllers
         }
 
         // GET: /Scm/Create
+      [Authorize(Roles = "canEdit")]
         public ActionResult Create()
         {
             return View();
@@ -47,6 +48,7 @@ namespace NikunjSocialConnectManager.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
+        [Authorize(Roles = "canEdit")]
         public ActionResult Create([Bind(Include="ContactId,Name,Address,City,State,Zip,Email")] Contact contact)
         {
             if (ModelState.IsValid)
@@ -60,6 +62,7 @@ namespace NikunjSocialConnectManager.Controllers
         }
 
         // GET: /Scm/Edit/5
+      [Authorize(Roles = "canEdit")]
         public ActionResult Edit(int? id)
         {
             if (id == null)
